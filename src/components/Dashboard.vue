@@ -285,104 +285,93 @@ import CarService from "../service/CarService";
 import EventService from "../service/EventService";
 
 export default {
-  data() {
-    return {
-      tasksCheckbox: [],
-      dropdownCities: [],
+	data() {
+		return {
+			tasksCheckbox: [],
+			dropdownCities: [
+				{name: 'New York', code: 'NY'},
+				{name: 'Rome', code: 'RM'},
+				{name: 'London', code: 'LDN'},
+				{name: 'Istanbul', code: 'IST'},
+				{name: 'Paris', code: 'PRS'}
+			],
       dropdownCity: null,
-      options: {
-        plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
-        defaultDate: "2019-01-01",
-        header: {
-          left: "prev,next",
-          center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay"
-        },
-        editable: true
-      },
-      events: null,
-      dataTableCars: null,
-      dataTableSelectedCar: null,
-      lineData: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
-        ],
-        datasets: [
-          {
-            label: "First Dataset",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            backgroundColor: "#2f4860",
-            borderColor: "#2f4860"
-          },
-          {
-            label: "Second Dataset",
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-            backgroundColor: "#00bb7e",
-            borderColor: "#00bb7e"
-          }
-        ]
-      }
-    };
-  },
+			// options: {
+			// 	plugins:[dayGridPlugin, timeGridPlugin, interactionPlugin],
+			// 	defaultDate: '2019-01-01',
+			// 	header: {
+			// 		left: 'prev,next',
+			// 		center: 'title',
+			// 		right: 'dayGridMonth,timeGridWeek,timeGridDay'
+			// 	},
+			// 	editable: true
+			// },
+			events: null,
+			dataTableCars: null,
+			dataTableSelectedCar: null,
+			lineData: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [
+					{
+						label: 'First Dataset',
+						data: [65, 59, 80, 81, 56, 55, 40],
+						fill: false,
+						backgroundColor: '#2f4860',
+						borderColor: '#2f4860'
+					},
+					{
+						label: 'Second Dataset',
+						data: [28, 48, 40, 19, 86, 27, 90],
+						fill: false,
+						backgroundColor: '#00bb7e',
+						borderColor: '#00bb7e'
+					}
+				]
+			},
+		}
+	},
   carService: null,
   eventService: null,
   created() {
     this.carService = new CarService();
     this.eventService = new EventService();
     console.log("----------------------");
-    this.tasksCheckbox = new Array(0);
-    this.dropdownCities = [
-      { name: "New York", code: "NY" },
-      { name: "Rome", code: "RM" },
-      { name: "London", code: "LDN" },
-      { name: "Istanbul", code: "IST" },
-      { name: "Paris", code: "PRS" }
-    ];
-    this.dropdownCity = null;
-    this.dataTableCars = null;
-	this.dataTableSelectedCar = null;
-	this.lineData = {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
-        ],
-        datasets: [
-          {
-            label: "First Dataset",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            backgroundColor: "#2f4860",
-            borderColor: "#2f4860"
-          },
-          {
-            label: "Second Dataset",
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-            backgroundColor: "#00bb7e",
-            borderColor: "#00bb7e"
-          }
-        ]
-      }
+    console.log(this);
 
-    console.log(this.dropdownCity);
+    // this.tasksCheckbox = new Array(0);
+    // // this.dropdownCities = [
+    // //   { name: "New York", code: "NY" },
+    // //   { name: "Rome", code: "RM" },
+    // //   { name: "London", code: "LDN" },
+    // //   { name: "Istanbul", code: "IST" },
+    // //   { name: "Paris", code: "PRS" }
+    // // ];
+    // this.dropdownCity = null;
+    // this.dataTableCars = null;
+    // this.dataTableSelectedCar = null;
+    // this.lineData = {
+    //   labels: ["January", "February", "March", "April", "May", "June", "July"],
+    //   datasets: [
+    //     {
+    //       label: "First Dataset",
+    //       data: [65, 59, 80, 81, 56, 55, 40],
+    //       fill: false,
+    //       backgroundColor: "#2f4860",
+    //       borderColor: "#2f4860"
+    //     },
+    //     {
+    //       label: "Second Dataset",
+    //       data: [28, 48, 40, 19, 86, 27, 90],
+    //       fill: false,
+    //       backgroundColor: "#00bb7e",
+    //       borderColor: "#00bb7e"
+    //     }
+    //   ]
+    // };
   },
   mounted() {
     this.carService.getCarsSmall().then(data => {
       this.dataTableCars = data;
-      console.log(this.dataTableCars);
     });
     this.eventService.getEvents().then(data => (this.events = data));
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../components/Home.vue'
+import Dashboard from '../components/Dashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -8,7 +8,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Dashboard
     // component:() => import(/* webpackChunkName: "home" */ '../views/Home.vue') 
   }
   // {
