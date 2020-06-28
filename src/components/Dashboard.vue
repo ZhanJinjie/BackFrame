@@ -213,7 +213,7 @@
 
     <div class="p-col-12 p-lg-8">
       <Panel header="Calendar" style="height: 100%">
-        <!-- <FullCalendar :events="events" :options="options" /> -->
+        <FullCalendar :events="events" :options="options" />
       </Panel>
     </div>
 
@@ -283,6 +283,9 @@
 <script>
 import CarService from "../service/CarService";
 import EventService from "../service/EventService";
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 export default {
 	data() {
@@ -296,16 +299,16 @@ export default {
 				{name: 'Paris', code: 'PRS'}
 			],
       dropdownCity: null,
-			// options: {
-			// 	plugins:[dayGridPlugin, timeGridPlugin, interactionPlugin],
-			// 	defaultDate: '2019-01-01',
-			// 	header: {
-			// 		left: 'prev,next',
-			// 		center: 'title',
-			// 		right: 'dayGridMonth,timeGridWeek,timeGridDay'
-			// 	},
-			// 	editable: true
-			// },
+			options: {
+				plugins:[dayGridPlugin, timeGridPlugin, interactionPlugin],
+				defaultDate: '2019-01-01',
+				header: {
+					left: 'prev,next',
+					center: 'title',
+					right: 'dayGridMonth,timeGridWeek,timeGridDay'
+				},
+				editable: true
+			},
 			events: null,
 			dataTableCars: null,
 			dataTableSelectedCar: null,
